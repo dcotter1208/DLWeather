@@ -14,7 +14,7 @@
         <!--Today-->
         <scene sceneID="WzE-aa-vkA">
             <objects>
-                <viewController id="3ce-aM-dwq" customClass="CurrentForecastViewController" customModule="DLWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3ce-aM-dwq" customClass="CurrentForecastViewController" customModule="DLWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gtm-eN-bMj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
