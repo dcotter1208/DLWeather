@@ -1,6 +1,0 @@
-framework module Pods_DLWeather {
-  umbrella header "Pods-DLWeather-umbrella.h"
-
-  export *
-  module * { export * }
-}
