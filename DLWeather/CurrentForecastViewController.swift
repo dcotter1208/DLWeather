@@ -19,12 +19,20 @@ class CurrentForecastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.setup()
-        
+        getCurrentWeather()
+    }
+    
+    private func getCurrentWeather() {
         let coordinates = CLLocation()
         let location = Location(coordinate: coordinates, city: "Detroit", state: "MI")
-        NetworkOperation().getWeather(forecast: .current, for: location) { (response) in
-            
+        
+        NetworkOperation().getWeather(forecast: .current, for: location) { (weatherResponse) in
+            if let currentTemp = weatherResponse?.currentTemperature {
+                DispatchQueue.main.async {
+                    self.currentTempLabel.text = currentTemp
+                }
+            }
         }
-    
     }
+    
 }

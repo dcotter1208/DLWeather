@@ -14,9 +14,13 @@ enum ForecastRequest: String {
     case tenDay = "forecast10day"
 }
 
-typealias WeatherResponse = ([String : String]?) -> Void
+typealias WeatherResponse = (Weather?) -> Void
+private typealias WeatherJson = [String: Any]
 
 struct NetworkOperation {
+
+    fileprivate let tempFahrenheitKey = "temp_f"
+    fileprivate let currentObservation = "current_observation"
     
     func getWeather(forecast: ForecastRequest, for location: Location, completion: @escaping WeatherResponse) {
         
@@ -37,13 +41,37 @@ struct NetworkOperation {
         
         Alamofire.request(url.absoluteString).responseJSON { response in
             if let json = response.result.value {
-                guard let weather = json as? [String : Any] else {
+                guard let weatherJson = json as? WeatherJson else {
                     completion(nil)
                     return
                 }
-                print("\(weather)")
+                
+                let weather = self.parse(weatherJson: weatherJson)
+                completion(weather)
             }
         }
     }
     
+    private func parse(weatherJson: WeatherJson) -> Weather {
+        var weather = Weather()
+        
+        guard let currentWeather = weatherJson[currentObservation] as? WeatherJson else {
+            return weather
+        }
+
+        if let currentTemp = currentWeather[tempFahrenheitKey] as? Double {
+            weather.currentTemperature = "\(currentTemp)"
+        }
+
+        return weather
+    }
 }
+
+
+
+
+
+
+
+
+
