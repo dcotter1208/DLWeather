@@ -20,9 +20,3 @@ struct LocationManager {
         }
     }
 }
-
-/////////////
-
-//CONSIDER A CLLOCATION MANAGER EXTENSION THAT SETS ITSELF UP & GETTING RID OF THIS STRUCT
-
-/////////////

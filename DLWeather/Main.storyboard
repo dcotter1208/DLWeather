@@ -72,11 +72,11 @@
             </objects>
             <point key="canvasLocation" x="-607.20000000000005" y="-317.09145427286359"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Ten Day Forecast Table View Controller-->
         <scene sceneID="ZML-f7-97B">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8G4-6t-Spc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="szc-3c-pOl" sceneMemberID="viewController">
+                <tableViewController id="szc-3c-pOl" customClass="TenDayForecastTableViewController" customModule="DLWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ifn-9C-M6d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,6 +141,9 @@
                             <outlet property="delegate" destination="szc-3c-pOl" id="ELR-py-J3S"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="forecastTableView" destination="ifn-9C-M6d" id="boZ-gk-H0T"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="192.80000000000001" y="-320.68965517241384"/>
