@@ -43,7 +43,6 @@ struct NetworkOperation {
         }
     }
     
-    
     func parseTenDayWeather(for location: Location, completion: TenDayWeatherResponse) {
         completion(nil)
     }
@@ -85,7 +84,7 @@ struct NetworkOperation {
         }
         
         let baseURL = "http://api.wunderground.com/api/"
-        let key = "adbcb99eace93b15"
+        let key = "API_KEY"
         let locationString = "\(state)/\(city)"
         let constructedURL = "\(baseURL)\(key)/\(forecast.rawValue)/q/\(locationString).json"
         
