@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CurrentForecastViewController: UIViewController {
     @IBOutlet weak var currentForecastImageView: UIImageView!
@@ -19,8 +20,11 @@ class CurrentForecastViewController: UIViewController {
         super.viewDidLoad()
         locationManager.setup()
         
-        NetworkOperation().getCurrentWeather { (response) in
-            //display weather with response
+        let coordinates = CLLocation()
+        let location = Location(coordinate: coordinates, city: "Detroit", state: "MI")
+        NetworkOperation().getWeather(forecast: .current, for: location) { (response) in
+            
         }
+    
     }
 }

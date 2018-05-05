@@ -9,13 +9,28 @@
 import Foundation
 import Alamofire
 
+enum Forecast: String {
+    case current = "conditions"
+    case tenDay = "forecast10day"
+}
+
 typealias WeatherResponse = ([String : String]?) -> Void
 
 struct NetworkOperation {
     
-    func getCurrentWeather(completion: @escaping WeatherResponse) {
-        let key = ""
-        guard let url = URL(string: "http://api.wunderground.com/api/\(key)/conditions/q/MI/Detroit.json") else {
+    func getWeather(forecast: Forecast, for location: Location, completion: @escaping WeatherResponse) {
+        
+        guard let city = location.city, let state = location.state else {
+            completion(nil)
+            return
+        }
+        
+        let baseURL = "http://api.wunderground.com/api/"
+        let key = "API_KEY"
+        let locationString = "\(state)/\(city)"
+        let constructedURL = "\(baseURL)\(key)/\(forecast.rawValue)/q/\(locationString).json"
+        
+        guard let url = URL(string: constructedURL) else {
             completion(nil)
             return
         }
