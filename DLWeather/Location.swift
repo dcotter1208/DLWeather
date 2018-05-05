@@ -19,6 +19,13 @@ struct Location {
         self.city = city
         self.state = state
     }
+    
+   mutating func update(with info: [String: String]) {
+        if let city = info["city"], let state = info["state"] {
+            self.city = city
+            self.state = state
+        }
+    }
 }
 
 extension CLLocation {
