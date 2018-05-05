@@ -42,11 +42,7 @@ struct NetworkOperation {
             completion(currentWeather)
         }
     }
-    
-    func parseTenDayWeather(for location: Location, completion: TenDayWeatherResponse) {
-        completion(nil)
-    }
-    
+
     private func request(_ urlString: String, completion: @escaping WeatherResponse) {
         guard let url = URL(string: urlString) else {
             completion(nil)
@@ -77,7 +73,11 @@ struct NetworkOperation {
         
         return weather
     }
-
+    
+    fileprivate func parseTenDayWeather(weatherJson: WeatherJson) -> [Weather] {
+        return [Weather()]
+    }
+    
     private func constructURL(with location: Location, forecast: ForecastRequest) -> String? {
         guard let city = location.city, let state = location.state else {
             return nil
