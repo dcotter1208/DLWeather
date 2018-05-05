@@ -87,7 +87,11 @@
                             <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <items>
                                 <navigationItem title="10 Day Forecast" id="G4m-Iy-0j1">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="done" id="bCS-PC-1d6"/>
+                                    <barButtonItem key="leftBarButtonItem" systemItem="done" id="bCS-PC-1d6">
+                                        <connections>
+                                            <action selector="doneSelected:" destination="szc-3c-pOl" id="NOG-Ab-Scd"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -96,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fYZ-ub-8x4" id="GaO-0L-nQl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJR-6I-BWH">
