@@ -17,7 +17,10 @@ class CurrentForecastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationLabel.text = "HELLO"
         locationManager.setup()
+        
+        NetworkOperation().getCurrentWeather { (response) in
+            //display weather with response
+        }
     }
 }

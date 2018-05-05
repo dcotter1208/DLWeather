@@ -15,6 +15,7 @@
 		C0FD7E27209C6F3800E8BF23 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD7E25209C6F3800E8BF23 /* Location.swift */; };
 		C0FD7E28209C6F3800E8BF23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD7E26209C6F3800E8BF23 /* LocationManager.swift */; };
 		C0FD7E2A209C6FAE00E8BF23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FD7E29209C6FAE00E8BF23 /* Main.storyboard */; };
+		C0FD7E2C209C769D00E8BF23 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD7E2B209C769D00E8BF23 /* NetworkOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C0FD7E25209C6F3800E8BF23 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C0FD7E26209C6F3800E8BF23 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C0FD7E29209C6FAE00E8BF23 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C0FD7E2B209C769D00E8BF23 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		FC5EF41087536922F6920946 /* Pods-DLWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLWeather/Pods-DLWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 				C0FD7E23209C6F3000E8BF23 /* CurrentForecastViewController.swift */,
 				C0FD7E25209C6F3800E8BF23 /* Location.swift */,
 				C0FD7E26209C6F3800E8BF23 /* LocationManager.swift */,
+				C0FD7E2B209C769D00E8BF23 /* NetworkOperation.swift */,
 				C07B9DA7209C6AB7002E325E /* Assets.xcassets */,
 				C0FD7E29209C6FAE00E8BF23 /* Main.storyboard */,
 				C07B9DA9209C6AB7002E325E /* LaunchScreen.storyboard */,
@@ -209,6 +212,7 @@
 			files = (
 				C0FD7E24209C6F3000E8BF23 /* CurrentForecastViewController.swift in Sources */,
 				C0FD7E28209C6F3800E8BF23 /* LocationManager.swift in Sources */,
+				C0FD7E2C209C769D00E8BF23 /* NetworkOperation.swift in Sources */,
 				C0FD7E27209C6F3800E8BF23 /* Location.swift in Sources */,
 				C07B9DA1209C6AB7002E325E /* AppDelegate.swift in Sources */,
 			);
