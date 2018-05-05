@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum Forecast: String {
+enum ForecastRequest: String {
     case current = "conditions"
     case tenDay = "forecast10day"
 }
@@ -18,7 +18,7 @@ typealias WeatherResponse = ([String : String]?) -> Void
 
 struct NetworkOperation {
     
-    func getWeather(forecast: Forecast, for location: Location, completion: @escaping WeatherResponse) {
+    func getWeather(forecast: ForecastRequest, for location: Location, completion: @escaping WeatherResponse) {
         
         guard let city = location.city, let state = location.state else {
             completion(nil)
@@ -45,4 +45,5 @@ struct NetworkOperation {
             }
         }
     }
+    
 }
