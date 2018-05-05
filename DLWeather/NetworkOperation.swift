@@ -26,6 +26,7 @@ struct NetworkOperation {
     fileprivate let currentObservationKey = "current_observation"
     fileprivate let forecastKey = "forecast"
     fileprivate let simpleForecastKey = "simpleforecast"
+    fileprivate let forecastDayKey = "forecastday"
     fileprivate let dateKey = "date"
     fileprivate let highTempKey = "high"
     fileprivate let lowTempKey = "low"
@@ -34,7 +35,7 @@ struct NetworkOperation {
     fileprivate let dayKey = "day"
     fileprivate let weekdayKey = "weekday_short"
     fileprivate let highLowTempFahrenheitKey = "fahrenheit"
-    
+  
     func getCurrentForecast(for location: Location, completion: @escaping CurrentWeatherResponse) {
         
         guard let url = constructURL(with: location, forecast: .current) else {
@@ -109,7 +110,7 @@ struct NetworkOperation {
 
         guard let forecastDict = weatherJson[forecastKey] as? WeatherJson,
         let forecastDayDict = forecastDict[simpleForecastKey] as? WeatherJson,
-        let forecastDayArray = forecastDayDict["forecastday"] as? [WeatherJson] else {
+        let forecastDayArray = forecastDayDict[forecastDayKey] as? [WeatherJson] else {
                 return tenDayForecast
         }
         
