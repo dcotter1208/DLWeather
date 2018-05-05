@@ -14,14 +14,5 @@ struct Weather {
     var lowTemperature: String?
     var highTemperature: String?
     var iconURL: String?
-//
-//    private enum CodingKeys: String, CodingKey {
-//        case currentTemperature = "temp_f"
-//        case date = "date"
-//        case lowTemperature = "low"
-//        case highTemperature = "high"
-//        case iconURL = "icon_url"
-//
-//    }
 }
 

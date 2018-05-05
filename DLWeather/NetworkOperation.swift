@@ -14,64 +14,82 @@ enum ForecastRequest: String {
     case tenDay = "forecast10day"
 }
 
-typealias WeatherResponse = (Weather?) -> Void
 private typealias WeatherJson = [String: Any]
+private typealias WeatherResponse = (WeatherJson?) -> Void
+typealias CurrentWeatherResponse = (Weather?) -> Void
+typealias TenDayWeatherResponse = ([Weather]?) -> Void
 
 struct NetworkOperation {
 
     fileprivate let tempFahrenheitKey = "temp_f"
     fileprivate let currentObservation = "current_observation"
+
+    func getCurrentWeather(for location: Location, completion: @escaping CurrentWeatherResponse) {
+        
+        guard let url = constructURL(with: location, forecast: .current) else {
+            completion(nil)
+            return
+        }
+        
+        request(url) { (weatherResponse) in
+            
+            guard let weather = weatherResponse else {
+                completion(nil)
+                return
+            }
+            
+            let currentWeather = self.parseCurrent(weatherJson: weather)
+            completion(currentWeather)
+        }
+    }
     
-    func getWeather(forecast: ForecastRequest, for location: Location, completion: @escaping WeatherResponse) {
-        
-        guard let city = location.city, let state = location.state else {
+    
+    func parseTenDayWeather(for location: Location, completion: TenDayWeatherResponse) {
+        completion(nil)
+    }
+    
+    private func request(_ urlString: String, completion: @escaping WeatherResponse) {
+        guard let url = URL(string: urlString) else {
             completion(nil)
             return
         }
         
-        let baseURL = "http://api.wunderground.com/api/"
-        let key = "API_KEY"
-        let locationString = "\(state)/\(city)"
-        let constructedURL = "\(baseURL)\(key)/\(forecast.rawValue)/q/\(locationString).json"
-        
-        guard let url = URL(string: constructedURL) else {
-            completion(nil)
-            return
-        }
-        
-        Alamofire.request(url.absoluteString).responseJSON { response in
+        Alamofire.request(url).responseJSON { response in
             if let json = response.result.value {
                 guard let weatherJson = json as? WeatherJson else {
                     completion(nil)
                     return
                 }
-                
-                let weather = self.parse(weatherJson: weatherJson)
-                completion(weather)
+                completion(weatherJson)
             }
         }
     }
     
-    private func parse(weatherJson: WeatherJson) -> Weather {
+    private func parseCurrent(weatherJson: WeatherJson) -> Weather {
         var weather = Weather()
         
         guard let currentWeather = weatherJson[currentObservation] as? WeatherJson else {
             return weather
         }
-
+        
         if let currentTemp = currentWeather[tempFahrenheitKey] as? Double {
             weather.currentTemperature = "\(currentTemp)"
         }
-
+        
         return weather
     }
+
+    private func constructURL(with location: Location, forecast: ForecastRequest) -> String? {
+        guard let city = location.city, let state = location.state else {
+            return nil
+        }
+        
+        let baseURL = "http://api.wunderground.com/api/"
+        let key = "adbcb99eace93b15"
+        let locationString = "\(state)/\(city)"
+        let constructedURL = "\(baseURL)\(key)/\(forecast.rawValue)/q/\(locationString).json"
+        
+        return constructedURL
+    }
+    
 }
-
-
-
-
-
-
-
-
-

@@ -25,9 +25,9 @@ class CurrentForecastViewController: UIViewController {
     private func getCurrentWeather() {
         let coordinates = CLLocation()
         let location = Location(coordinate: coordinates, city: "Detroit", state: "MI")
-        
-        NetworkOperation().getWeather(forecast: .current, for: location) { (weatherResponse) in
-            if let currentTemp = weatherResponse?.currentTemperature {
+
+        NetworkOperation().getCurrentWeather(for: location) { (currentWeather) in
+            if let currentTemp = currentWeather?.currentTemperature {
                 DispatchQueue.main.async {
                     self.currentTempLabel.text = currentTemp
                 }
