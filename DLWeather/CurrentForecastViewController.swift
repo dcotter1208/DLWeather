@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 
 class CurrentForecastViewController: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var currentForecastImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var currentTempLabel: UILabel!
     
@@ -47,7 +46,7 @@ class CurrentForecastViewController: UIViewController, CLLocationManagerDelegate
         NetworkOperation().getCurrentForecast(for: location) { (currentWeather) in
             if let currentTemp = currentWeather?.currentTemperature {
                 DispatchQueue.main.async {
-                    self.currentTempLabel.text = currentTemp
+                    self.currentTempLabel.text = "\(currentTemp)°"
                 }
             }
         }
