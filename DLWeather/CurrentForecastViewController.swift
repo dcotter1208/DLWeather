@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CurrentForecastViewController: UIViewController {
     @IBOutlet weak var currentForecastImageView: UIImageView!
@@ -17,7 +18,21 @@ class CurrentForecastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationLabel.text = "HELLO"
         locationManager.setup()
+        getCurrentWeather()
     }
+    
+    private func getCurrentWeather() {
+        let coordinates = CLLocation()
+        let location = Location(coordinate: coordinates, city: "Detroit", state: "MI")
+
+        NetworkOperation().getCurrentWeather(for: location) { (currentWeather) in
+            if let currentTemp = currentWeather?.currentTemperature {
+                DispatchQueue.main.async {
+                    self.currentTempLabel.text = currentTemp
+                }
+            }
+        }
+    }
+    
 }
