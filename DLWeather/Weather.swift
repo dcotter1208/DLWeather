@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct Weather {
+    var currentTemperature: String?
+    var date: String?
+    var lowTemperature: String?
+    var highTemperature: String?
+    var iconURL: String?
+}
