@@ -67,4 +67,9 @@ class CurrentForecastViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let tenDayForecastViewController = segue.destination as? TenDayForecastTableViewController {
+            tenDayForecastViewController.tenDayForecast = self.tenDayForecast
+        }
+    }
 }
