@@ -91,7 +91,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.28235294119999998" green="0.69803921570000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.34901960780000002" green="0.23921568630000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="cYu-Wl-xWw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -111,14 +110,54 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCellIdentifier" rowHeight="91" id="fYZ-ub-8x4">
-                                <rect key="frame" x="0.0" y="72" width="375" height="91"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCellIdentifier" rowHeight="107" id="0CY-YH-w9A" customClass="WeatherCell" customModule="DLWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fYZ-ub-8x4" id="GaO-0L-nQl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0CY-YH-w9A" id="kAR-QV-5uk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbQ-21-FKD">
+                                            <rect key="frame" x="16" y="13" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="GHC-SY-dWk"/>
+                                                <constraint firstAttribute="height" constant="80" id="KZ6-s3-3OU"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9j-PG-RAp">
+                                            <rect key="frame" x="104" y="13" width="255" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="im4-cs-AG2"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYl-c0-zqy">
+                                            <rect key="frame" x="104" y="50" width="255" height="29"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sYl-c0-zqy" secondAttribute="bottom" constant="17" id="NgI-oh-aog"/>
+                                        <constraint firstItem="xbQ-21-FKD" firstAttribute="leading" secondItem="kAR-QV-5uk" secondAttribute="leadingMargin" id="P7q-3Q-WKe"/>
+                                        <constraint firstItem="O9j-PG-RAp" firstAttribute="trailing" secondItem="sYl-c0-zqy" secondAttribute="trailing" id="Pcu-8h-DZ4"/>
+                                        <constraint firstItem="O9j-PG-RAp" firstAttribute="trailing" secondItem="kAR-QV-5uk" secondAttribute="trailingMargin" id="URd-gi-qCJ"/>
+                                        <constraint firstItem="xbQ-21-FKD" firstAttribute="centerY" secondItem="kAR-QV-5uk" secondAttribute="centerY" id="Zc0-bu-0Ue"/>
+                                        <constraint firstItem="xbQ-21-FKD" firstAttribute="top" secondItem="O9j-PG-RAp" secondAttribute="top" id="gOL-sj-vHy"/>
+                                        <constraint firstItem="O9j-PG-RAp" firstAttribute="leading" secondItem="xbQ-21-FKD" secondAttribute="trailing" constant="8" symbolic="YES" id="qGU-uL-Xnm"/>
+                                        <constraint firstItem="sYl-c0-zqy" firstAttribute="top" secondItem="O9j-PG-RAp" secondAttribute="bottom" constant="8" symbolic="YES" id="t8t-8P-Yqg"/>
+                                        <constraint firstItem="O9j-PG-RAp" firstAttribute="leading" secondItem="sYl-c0-zqy" secondAttribute="leading" id="yeA-ER-1tr"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.28235294119999998" green="0.69803921570000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="O9j-PG-RAp" id="IWu-e4-Fbc"/>
+                                    <outlet property="iconImageView" destination="xbQ-21-FKD" id="yhR-gu-X22"/>
+                                    <outlet property="tempLabel" destination="sYl-c0-zqy" id="c5f-Aq-r5j"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -126,6 +165,7 @@
                             <outlet property="delegate" destination="szc-3c-pOl" id="ELR-py-J3S"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="forecastTableView" destination="ifn-9C-M6d" id="boZ-gk-H0T"/>
                     </connections>

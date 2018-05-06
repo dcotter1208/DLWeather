@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5FDFC0ECCE75284A0FAF75CF /* Pods_DLWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BAA6C87F3B6C9ECAA149ECF /* Pods_DLWeather.framework */; };
 		C073A493209E55C100F2FD22 /* TenDayForecastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C073A492209E55C000F2FD22 /* TenDayForecastTableViewController.swift */; };
+		C073A497209E945B00F2FD22 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C073A496209E945B00F2FD22 /* WeatherCell.swift */; };
 		C07B9DA1209C6AB7002E325E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B9DA0209C6AB7002E325E /* AppDelegate.swift */; };
 		C07B9DA8209C6AB7002E325E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07B9DA7209C6AB7002E325E /* Assets.xcassets */; };
 		C07B9DAB209C6AB7002E325E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07B9DA9209C6AB7002E325E /* LaunchScreen.storyboard */; };
@@ -24,6 +25,7 @@
 		5BAA6C87F3B6C9ECAA149ECF /* Pods_DLWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8B5BE8CF4901B8538542FF /* Pods-DLWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLWeather/Pods-DLWeather.release.xcconfig"; sourceTree = "<group>"; };
 		C073A492209E55C000F2FD22 /* TenDayForecastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenDayForecastTableViewController.swift; sourceTree = "<group>"; };
+		C073A496209E945B00F2FD22 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		C07B9D9D209C6AB7002E325E /* DLWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07B9DA0209C6AB7002E325E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07B9DA7209C6AB7002E325E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				C0FD7E25209C6F3800E8BF23 /* Location.swift */,
 				C0FD7E26209C6F3800E8BF23 /* LocationManager.swift */,
 				C0FD7E2B209C769D00E8BF23 /* NetworkOperation.swift */,
+				C073A496209E945B00F2FD22 /* WeatherCell.swift */,
 				C07B9DA7209C6AB7002E325E /* Assets.xcassets */,
 				C0FD7E29209C6FAE00E8BF23 /* Main.storyboard */,
 				C07B9DA9209C6AB7002E325E /* LaunchScreen.storyboard */,
@@ -222,6 +225,7 @@
 				C0FD7E28209C6F3800E8BF23 /* LocationManager.swift in Sources */,
 				C0FD7E2C209C769D00E8BF23 /* NetworkOperation.swift in Sources */,
 				C073A493209E55C100F2FD22 /* TenDayForecastTableViewController.swift in Sources */,
+				C073A497209E945B00F2FD22 /* WeatherCell.swift in Sources */,
 				C0FD7E27209C6F3800E8BF23 /* Location.swift in Sources */,
 				C0FD7E2E209D36BE00E8BF23 /* Weather.swift in Sources */,
 				C07B9DA1209C6AB7002E325E /* AppDelegate.swift in Sources */,

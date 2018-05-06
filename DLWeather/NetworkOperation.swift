@@ -155,7 +155,7 @@ struct NetworkOperation {
         
         let baseURL = "http://api.wunderground.com/api/"
         let key = "adbcb99eace93b15"
-        let locationString = "\(state)/\(city)"
+        let locationString = "\(state)/\(city.replacingOccurrences(of: " ", with: "_"))"
         let constructedURL = "\(baseURL)\(key)/\(forecast.rawValue)/q/\(locationString).json"
         
         return constructedURL
