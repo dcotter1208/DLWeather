@@ -52,6 +52,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C073A499209E9DB500F2FD22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0FD7E23209C6F3000E8BF23 /* CurrentForecastViewController.swift */,
+				C073A492209E55C000F2FD22 /* TenDayForecastTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C073A49A209E9DBF00F2FD22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0FD7E2D209D36BE00E8BF23 /* Weather.swift */,
+				C0FD7E25209C6F3800E8BF23 /* Location.swift */,
+				C073A496209E945B00F2FD22 /* WeatherCell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C07B9D94209C6AB7002E325E = {
 			isa = PBXGroup;
 			children = (
@@ -74,13 +93,10 @@
 			isa = PBXGroup;
 			children = (
 				C07B9DA0209C6AB7002E325E /* AppDelegate.swift */,
-				C0FD7E23209C6F3000E8BF23 /* CurrentForecastViewController.swift */,
-				C073A492209E55C000F2FD22 /* TenDayForecastTableViewController.swift */,
-				C0FD7E2D209D36BE00E8BF23 /* Weather.swift */,
-				C0FD7E25209C6F3800E8BF23 /* Location.swift */,
+				C073A499209E9DB500F2FD22 /* Controllers */,
+				C073A49A209E9DBF00F2FD22 /* Model */,
 				C0FD7E26209C6F3800E8BF23 /* LocationManager.swift */,
 				C0FD7E2B209C769D00E8BF23 /* NetworkOperation.swift */,
-				C073A496209E945B00F2FD22 /* WeatherCell.swift */,
 				C07B9DA7209C6AB7002E325E /* Assets.xcassets */,
 				C0FD7E29209C6FAE00E8BF23 /* Main.storyboard */,
 				C07B9DA9209C6AB7002E325E /* LaunchScreen.storyboard */,
