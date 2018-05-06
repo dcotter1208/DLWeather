@@ -6,5 +6,5 @@ target 'DLWeather' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
-
+  pod 'AlamofireImage', '~> 3.3'
 end

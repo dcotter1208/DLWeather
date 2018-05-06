@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
+import AlamofireImage
 
 class TenDayForecastTableViewController: UITableViewController, CLLocationManagerDelegate {
     @IBOutlet var forecastTableView: UITableView!
@@ -22,13 +24,14 @@ class TenDayForecastTableViewController: UITableViewController, CLLocationManage
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCellIdentifier", for: indexPath) as! WeatherCell
         let forecast = tenDayForecast[indexPath.row]
-        if let date = forecast.date, let highTemp = forecast.highTemperature, let lowTemp = forecast.lowTemperature {
-            cell.textLabel?.text = date
-            cell.detailTextLabel?.text = "High: \(highTemp) Low: \(lowTemp)"
-            cell.textLabel?.textColor = .white
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
+        if let date = forecast.date, let highTemp = forecast.highTemperature, let lowTemp = forecast.lowTemperature, let urlString = forecast.iconURL {
+            cell.dateLabel.text = date
+            cell.tempLabel.text = "High: \(highTemp) Low: \(lowTemp)"
+            let url = URL(string: urlString)
+            cell.iconImageView?.af_setImage(withURL: url!, placeholderImage: #imageLiteral(resourceName: "placeholder"))
         }
 
         return cell
