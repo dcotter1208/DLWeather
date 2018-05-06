@@ -20,10 +20,22 @@ typealias CurrentWeatherResponse = (Weather?) -> Void
 typealias TenDayWeatherResponse = ([Weather]?) -> Void
 
 struct NetworkOperation {
-
+    
+    //Weather Json Keys
     fileprivate let tempFahrenheitKey = "temp_f"
-    fileprivate let currentObservation = "current_observation"
-
+    fileprivate let currentObservationKey = "current_observation"
+    fileprivate let forecastKey = "forecast"
+    fileprivate let simpleForecastKey = "simpleforecast"
+    fileprivate let forecastDayKey = "forecastday"
+    fileprivate let dateKey = "date"
+    fileprivate let highTempKey = "high"
+    fileprivate let lowTempKey = "low"
+    fileprivate let iconUrlKey = "icon_url"
+    fileprivate let monthNameKey = "monthname_short"
+    fileprivate let dayKey = "day"
+    fileprivate let weekdayKey = "weekday_short"
+    fileprivate let highLowTempFahrenheitKey = "fahrenheit"
+  
     func getCurrentForecast(for location: Location, completion: @escaping CurrentWeatherResponse) {
         
         guard let url = constructURL(with: location, forecast: .current) else {
@@ -43,7 +55,7 @@ struct NetworkOperation {
         }
     }
     
-    func getTenDayForecast(for location: Location, completion: @escaping CurrentWeatherResponse) {
+    func getTenDayForecast(for location: Location, completion: @escaping TenDayWeatherResponse) {
         
         guard let url = constructURL(with: location, forecast: .tenDay) else {
             completion(nil)
@@ -58,8 +70,8 @@ struct NetworkOperation {
             }
             
             let tenDayForecast = self.parseTenDayWeather(weatherJson: weather)
+            completion(tenDayForecast)
         }
-        
     }
 
     private func request(_ urlString: String, completion: @escaping WeatherResponse) {
@@ -70,7 +82,6 @@ struct NetworkOperation {
         
         Alamofire.request(url).responseJSON { response in
             if let json = response.result.value {
-                print("\(json)")
                 guard let weatherJson = json as? WeatherJson else {
                     completion(nil)
                     return
@@ -83,7 +94,7 @@ struct NetworkOperation {
     private func parseCurrent(weatherJson: WeatherJson) -> Weather {
         var weather = Weather()
         
-        guard let currentWeather = weatherJson[currentObservation] as? WeatherJson else {
+        guard let currentWeather = weatherJson[currentObservationKey] as? WeatherJson else {
             return weather
         }
         
@@ -95,7 +106,46 @@ struct NetworkOperation {
     }
     
     fileprivate func parseTenDayWeather(weatherJson: WeatherJson) -> [Weather] {
-        return [Weather()]
+        var tenDayForecast = [Weather]()
+
+        guard let forecastDict = weatherJson[forecastKey] as? WeatherJson,
+        let forecastDayDict = forecastDict[simpleForecastKey] as? WeatherJson,
+        let forecastDayArray = forecastDayDict[forecastDayKey] as? [WeatherJson] else {
+                return tenDayForecast
+        }
+        
+        for forecastDay in forecastDayArray {
+            if let dateDict = forecastDay[dateKey] as? WeatherJson,
+                let highTempDict = forecastDay[highTempKey] as? WeatherJson,
+                let lowTempDict =  forecastDay[lowTempKey] as? WeatherJson,
+                let iconUrl = forecastDay[iconUrlKey] as? String {
+
+                let date = constructDateString(from: dateDict)
+                let highTemp = constructTempString(from: highTempDict)
+                let lowTemp = constructTempString(from: lowTempDict)
+
+                let tenDayForecastDay = Weather(currentTemperature: nil, date: date, lowTemperature: lowTemp, highTemperature: highTemp, iconURL: iconUrl)
+                tenDayForecast.append(tenDayForecastDay)
+            }
+        }
+        
+        return tenDayForecast
+    }
+    
+    private func constructDateString(from date: WeatherJson) -> String? {
+        if let weekday = date[weekdayKey] as? String,
+            let day = date[dayKey] as? Int,
+            let month = date[monthNameKey] as? String {
+            return "\(weekday), \(month) \(day)"
+        }
+        return nil
+    }
+    
+    private func constructTempString(from temp: WeatherJson) -> String? {
+        if let temperature = temp[highLowTempFahrenheitKey] as? String {
+            return temperature
+        }
+        return nil
     }
     
     private func constructURL(with location: Location, forecast: ForecastRequest) -> String? {
@@ -110,5 +160,4 @@ struct NetworkOperation {
         
         return constructedURL
     }
-    
 }
