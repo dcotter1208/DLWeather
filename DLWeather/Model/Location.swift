@@ -48,7 +48,7 @@ extension CLLocation {
                 return
             }
 
-            let addressDict = ["city" : city, "state": state]
+            let addressDict = [cityKey : city, stateKey: state]
             handler(addressDict)
         }
     }
