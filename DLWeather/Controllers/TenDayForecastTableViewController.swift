@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
 import Alamofire
 import AlamofireImage
 
-class TenDayForecastTableViewController: UITableViewController, CLLocationManagerDelegate {
+class TenDayForecastTableViewController: UITableViewController {
     @IBOutlet var forecastTableView: UITableView!
     var tenDayForecast = [Weather]()
     
