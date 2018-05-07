@@ -101,7 +101,6 @@ struct NetworkOperation {
         if let currentTemp = currentWeather[tempFahrenheitKey] as? Double {
             weather.currentTemperature = "\(currentTemp)"
         }
-        
         return weather
     }
     
@@ -128,7 +127,6 @@ struct NetworkOperation {
                 tenDayForecast.append(tenDayForecastDay)
             }
         }
-        
         return tenDayForecast
     }
     
