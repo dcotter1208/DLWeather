@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+private let cellIdentifier = "WeatherCellIdentifier"
+
 class TenDayForecastTableViewController: UITableViewController {
     @IBOutlet var forecastTableView: UITableView!
     var tenDayForecast = [Weather]()
@@ -23,7 +25,7 @@ class TenDayForecastTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCellIdentifier", for: indexPath) as! WeatherCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WeatherCell
         let forecast = tenDayForecast[indexPath.row]
         
         if let date = forecast.date, let highTemp = forecast.highTemperature, let lowTemp = forecast.lowTemperature, let urlString = forecast.iconURL {
