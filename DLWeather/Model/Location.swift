@@ -9,6 +9,9 @@
 import Foundation
 import CoreLocation
 
+private let cityKey = "city"
+private let stateKey = "state"
+
 struct Location {
     var coordiante: CLLocation
     var city: String?
@@ -21,7 +24,7 @@ struct Location {
     }
     
    mutating func update(with info: [String: String]) {
-        if let city = info["city"], let state = info["state"] {
+        if let city = info[cityKey], let state = info[stateKey] {
             self.city = city
             self.state = state
         }
